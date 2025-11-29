@@ -9,11 +9,12 @@ AmiraEncoder allows developers to use the rotary encoder with acceleration suppo
 
 - ✔️ Reliable direction detection (CW / CCW) 
 - ✔️ Automatic acceleration based on rotation speed 
-- ✔️ Configurable normal step and accelerated step
+- ✔️ Configurable normal step, accelerated step and encoder sensitivity
+- ✔️ Integrated variable increment/decrement logic
 - ✔️ Bounce-resistant thanks to state-table logic (developed by Brian Low)
-- ✔️ Supports internal or external pull-up resistors
+- ✔️ Selectable full step and half step table
+- ✔️ Supports internal or external pullup resistors
 - ✔️ Clean and beginner-friendly API
-- ✔️ Pure full-step decoding (no half-step noise)
 
 ---
 
@@ -30,12 +31,11 @@ Copy the **AmiraEncoder** folder into: ~/Documents/Arduino/libraries.
 
 ## 📕 User guide
 Three examples to learn how to use the library. Enjoy!😎<br>
-❗❗Remember that if you want to use half step rotary encoder table then you have to declare "#define HALF_STEP" before declaring "#include <AmiraEncoder.h>".
+❗❗Remember that if you want to use half step rotary encoder table then you have to declare "#define HALF_STEP" before including "#include <AmiraEncoder.h>".
 
 ## ⚙️ Requirements
 
-Arduino compatible board,<br>
-I2C LCD based on PCF8574 or compatible,<br>
+Arduino compatible board.<br>
 
 ## 👤 Author
 
@@ -50,6 +50,4 @@ Leave a star ⭐ on GitHub if you find AmiraEncoder useful!
 
 ![Screenshot encoder](docs/img/AcceleratedRotary.jpg)
 ![Screenshot encoder](docs/img/DirectionRotary.jpg)
-
 ![Screenshot encoder](docs/img/NormalRotary.jpg)
-
