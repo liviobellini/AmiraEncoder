@@ -10,7 +10,7 @@ AmiraEncoder allows developers to use the rotary encoder with acceleration suppo
 - ✔️ Reliable direction detection (CW / CCW) 
 - ✔️ Automatic acceleration based on rotation speed 
 - ✔️ Configurable normal step and accelerated step
-- ✔️ Bounce-resistant thanks to state-table logic
+- ✔️ Bounce-resistant thanks to state-table logic (developed by Brian Low)
 - ✔️ Supports internal or external pull-up resistors
 - ✔️ Clean and beginner-friendly API
 - ✔️ Pure full-step decoding (no half-step noise)
@@ -49,4 +49,5 @@ Leave a star ⭐ on GitHub if you find AmiraEncoder useful!
 
 ![Screenshot encoder](docs/img/AcceleratedRotary.jpg)
 ![Screenshot encoder](docs/img/DirectionRotary.jpg)
+
 ![Screenshot encoder](docs/img/NormalRotary.jpg)
