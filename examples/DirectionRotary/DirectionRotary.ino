@@ -18,8 +18,8 @@ void setup() {
   lcd.begin(16, 2);                                                          //Initialize the LCD display with 16 columns and 2 rows.
   lcd.setBacklight(255);                                                     //Turn on lcd backlight.
   myEncoder.begin();                                                         //Execute setup for rotary encoder and read the state.
-  //IMPORTANT: if you don't call setStep then default values will be 1.
-  //IMPORTANT: if you don't call setAccel then default values will be 1.
+  //IMPORTANT: if you don't call setStep then default value will be 1.
+  //IMPORTANT: if you don't call setAccel then default value will be 1.
   lcd.clear();
   lcd.setCursor(0, 1);
   lcd.print("get direction");
