@@ -29,7 +29,8 @@ Open Library Manager on left column of Arduino IDE -> search "AmiraEncoder" -> s
 Copy the **AmiraEncoder** folder into: ~/Documents/Arduino/libraries.
 
 ## 📕 User guide
-Three examples to learn how to use the library. Enjoy!😎
+Three examples to learn how to use the library. Enjoy!😎<br>
+❗❗Remember that if you want to use half step rotary encoder table then you have to declare "#define HALF_STEP" before declaring "#include <AmiraEncoder.h>".
 
 ## ⚙️ Requirements
 
@@ -51,3 +52,4 @@ Leave a star ⭐ on GitHub if you find AmiraEncoder useful!
 ![Screenshot encoder](docs/img/DirectionRotary.jpg)
 
 ![Screenshot encoder](docs/img/NormalRotary.jpg)
+
