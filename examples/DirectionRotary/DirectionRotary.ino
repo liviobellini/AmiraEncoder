@@ -1,6 +1,7 @@
 //AmiraEncoder direction rotary encoder.
 //This example shows how to use getDirection function to know how you are turning the rotary encoder, enjoy. :-)
 #include <Arduino.h>
+//#define HALF_STEP                                                          //Uncomment if you want to use half step rotary encoder table.
 #include <AmiraEncoder.h>
 #include <Wire.h>
 #include <hd44780.h>
@@ -17,9 +18,8 @@ Encoder myEncoder(DT, CLK, EXTERNAL);                                        //S
 void setup() {  
   lcd.begin(16, 2);                                                          //Initialize the LCD display with 16 columns and 2 rows.
   lcd.setBacklight(255);                                                     //Turn on lcd backlight.
-  myEncoder.begin();                                                         //Execute setup for rotary encoder and read the state.
-  //IMPORTANT: if you don't call setStep then default value will be 1.
-  //IMPORTANT: if you don't call setAccel then default value will be 1.
+  //IMPORTANT: if you don't call setStep then default values will be 1.
+  //IMPORTANT: if you don't call setAccel then default values will be 1.
   lcd.clear();
   lcd.setCursor(0, 1);
   lcd.print("get direction");
