@@ -28,7 +28,6 @@ Encoder::Encoder(uint8_t _pinA, uint8_t _pinB, uint8_t _pullup, byte _encSens) {
   encSens = _encSens;
   normStep = 1;
   longStep = 1;
-  state = 0;
   dir = DIR_NONE;
   value = 0;
   currentRotation = 0;
@@ -78,3 +77,4 @@ uint8_t Encoder::setAccel(uint8_t _longStep) {
 unsigned char Encoder::getDirection() {
   return dir;
 }
+
