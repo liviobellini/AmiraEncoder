@@ -1,5 +1,4 @@
 Encoder         KEYWORD Represents an Encoder object.
-begin           KEYWORD	Setup the pullup resistors for pinA and pinB.
 loop            KEYWORD	Check if someone is rotating the encoder.
 setStep	        KEYWORD	Set the normal step when encoder is not accelerated.
 setAccel        KEYWORD Set the long step when encoder is accelerated.
