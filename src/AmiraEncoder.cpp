@@ -1,5 +1,26 @@
 #include "AmiraEncoder.h"
 
+#ifdef HALF_STEP								      //Use the half-step state table (emits a code at 00 and 11).
+const unsigned char ttable[6][4] = {
+  {R_START_M,            R_CW_BEGIN,     R_CCW_BEGIN,  R_START},
+  {R_START_M | DIR_CCW, R_START,        R_CCW_BEGIN,  R_START},
+  {R_START_M | DIR_CW,  R_CW_BEGIN,     R_START,      R_START},
+  {R_START_M,            R_CCW_BEGIN_M,  R_CW_BEGIN_M, R_START},
+  {R_START_M,            R_START_M,      R_CW_BEGIN_M, R_START | DIR_CW},
+  {R_START_M,            R_CCW_BEGIN_M,  R_START_M,    R_START | DIR_CCW},
+};
+#else										              //Use the full-step state table (emits a code at 00 only).
+const unsigned char ttable[7][4] = {
+  {R_START,    R_CW_BEGIN,  R_CCW_BEGIN, R_START},
+  {R_CW_NEXT,  R_START,     R_CW_FINAL,  R_START | DIR_CW},
+  {R_CW_NEXT,  R_CW_BEGIN,  R_START,     R_START},
+  {R_CW_NEXT,  R_CW_BEGIN,  R_CW_FINAL,  R_START},
+  {R_CCW_NEXT, R_START,     R_CCW_BEGIN, R_START},
+  {R_CCW_NEXT, R_CCW_FINAL, R_START,     R_START | DIR_CCW},
+  {R_CCW_NEXT, R_CCW_FINAL, R_CCW_BEGIN, R_START},
+};
+#endif
+
 Encoder::Encoder(uint8_t _pinA, uint8_t _pinB, uint8_t _pullup, byte _encSens) {
   pinA = _pinA;
   pinB = _pinB;
@@ -12,9 +33,6 @@ Encoder::Encoder(uint8_t _pinA, uint8_t _pinB, uint8_t _pullup, byte _encSens) {
   value = 0;
   currentRotation = 0;
   lastRotation = 0;
-}
-
-void Encoder::begin() {
   if (pullup == INTERNAL) {
     pinMode(pinA, INPUT_PULLUP);
     pinMode(pinB, INPUT_PULLUP);
@@ -22,36 +40,18 @@ void Encoder::begin() {
     pinMode(pinA, INPUT);
     pinMode(pinB, INPUT);
   }
-  state = (digitalRead(pinA) << 1) | digitalRead(pinB);
+  state = R_START;
 }
 
 int Encoder::loop(int _value) {
-  unsigned char newState = (digitalRead(pinA) << 1) | digitalRead(pinB);
-  unsigned char transition = (state << 2) | newState;
   int encStep = normStep;
-  dir = DIR_NONE;
   value = _value;
-  switch (transition) {
-    
-    //case 0b0001: dir = DIR_CW; break; // 00 -> 01
-    //case 0b0111: dir = DIR_CW; break; // 01 -> 11
-    case 0b1110: dir = DIR_CW; break; // 11 -> 10 (full step)
-    //case 0b1000: dir = DIR_CW; break; // 10 -> 00
-    
-    //case 0b0010: dir = DIR_CCW; break; // 00 -> 10
-    //case 0b1011: dir = DIR_CCW; break; // 10 -> 11
-    case 0b1101: dir = DIR_CCW; break; // 11 -> 01 (full step)
-    //case 0b0100: dir = DIR_CCW; break; // 01 -> 00
-  
-  }
-  state = newState;
-  if(encSens != 0) {
-    if (dir == DIR_CW || dir == DIR_CCW) {
-      lastRotation = currentRotation;
-      currentRotation = millis();
-    } else if(dir == DIR_NONE) {
-      return value;
-    }
+  unsigned char pinstate = (digitalRead(pinB) << 1) | digitalRead(pinA);
+  state = ttable[state & 0xf][pinstate];
+  dir = state & 0x30; 
+  if(encSens != 0 && dir != DIR_NONE) {
+    lastRotation = currentRotation;
+    currentRotation = millis();
     if((currentRotation - lastRotation) < encSens){
       encStep = longStep;
     }
@@ -77,5 +77,4 @@ uint8_t Encoder::setAccel(uint8_t _longStep) {
 
 unsigned char Encoder::getDirection() {
   return dir;
-
 }
