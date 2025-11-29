@@ -5,9 +5,12 @@
 #include <Wire.h>
 #include <hd44780.h>
 #include <hd44780ioClass/hd44780_I2Cexp.h>
+
 //-------------------------------------------------PIN DEFINITION-----------------------------------------------
 #define DT 4                  //Data encoder.
 #define CLK 5                 //Clock encoder.
+//----------------------------------------CONSTANTS AND VARIABLES DEFINITION------------------------------------
+const byte ENCSENS = 25;      //Defines the milliseconds threshold to enable/disable rotary encoder acceleration. The higher the value, the earlier the acceleration kicks in.
 ///////////////////////OBJECTS DEFINITION//////////////////////
 hd44780_I2Cexp lcd;                                                          //Set object LCD with address auto-detect.
 Encoder myEncoder(DT, CLK, EXTERNAL, 25);                                    //Set object for rotary encoder with external pullup resistors and sensitivity 25.
@@ -17,11 +20,10 @@ Encoder myEncoder(DT, CLK, EXTERNAL, 25);                                    //S
 void setup() {  
   lcd.begin(16, 2);                                                          //Initialize the LCD display with 16 columns and 2 rows.
   lcd.setBacklight(255);                                                     //Turn on lcd backlight.
-  myEncoder.begin();                                                         //Execute setup for rotary encoder and read the state.
   myEncoder.setStep(1);  //Set the normal step when encoder is not accelerated, YOU CAN RECALL THIS FUNCTION ANYWHERE AND AS MANY TIMES AS YOU WANT TO CHANGE THE NORMAL STEP VALUE.
   myEncoder.setAccel(8); //Set the long step when encoder is accelerated YOU CAN RECALL THIS FUNCTION ANYWHERE AND AS MANY TIMES AS YOU WANT TO CHANGE THE LONG STEP VALUE.
-  //IMPORTANT: if you don't call setStep then default value will be 1.
-  //IMPORTANT: if you don't call setAccel then default value will be 1.
+  //IMPORTANT: if you don't call setStep then default values will be 1.
+  //IMPORTANT: if you don't call setAccel then default values will be 1.
   lcd.clear();
   lcd.home();
   lcd.print("VOLUME:    db");
