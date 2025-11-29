@@ -35,12 +35,12 @@ int Encoder::loop(int _value) {
     
     //case 0b0001: dir = DIR_CW; break; // 00 -> 01
     //case 0b0111: dir = DIR_CW; break; // 01 -> 11
-    case 0b1110: dir = DIR_CW; break; // 11 -> 10 (final state)
+    case 0b1110: dir = DIR_CW; break; // 11 -> 10 (full step)
     //case 0b1000: dir = DIR_CW; break; // 10 -> 00
     
     //case 0b0010: dir = DIR_CCW; break; // 00 -> 10
     //case 0b1011: dir = DIR_CCW; break; // 10 -> 11
-    case 0b1101: dir = DIR_CCW; break; // 11 -> 01 (final state)
+    case 0b1101: dir = DIR_CCW; break; // 11 -> 01 (full step)
     //case 0b0100: dir = DIR_CCW; break; // 01 -> 00
   
   }
@@ -77,4 +77,5 @@ uint8_t Encoder::setAccel(uint8_t _longStep) {
 
 unsigned char Encoder::getDirection() {
   return dir;
+
 }
