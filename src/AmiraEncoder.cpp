@@ -27,11 +27,10 @@ Encoder::Encoder(uint8_t _pinA, uint8_t _pinB, uint8_t _pullup, byte _encSens) {
   pullup = _pullup;
   encSens = _encSens;
   normStep = 1;
-  longStep = 1;
+  longStep = 0;
   dir = DIR_NONE;
   value = 0;
   currentRotation = 0;
-  lastRotation = 0;
   if (pullup == INTERNAL) {
     pinMode(pinA, INPUT_PULLUP);
     pinMode(pinB, INPUT_PULLUP);
@@ -48,13 +47,15 @@ int Encoder::loop(int _value) {
   unsigned char pinstate = (digitalRead(pinB) << 1) | digitalRead(pinA);
   state = ttable[state & 0xf][pinstate];
   dir = state & 0x30; 
-  if(encSens != 0 && dir != DIR_NONE) {
-    lastRotation = currentRotation;
-    currentRotation = millis();
-    if((currentRotation - lastRotation) < encSens){
+  if(encSens != 0 && dir != DIR_NONE && longStep != 0) {
+    unsigned long now = millis();
+    unsigned long delta = now - currentRotation;
+    currentRotation = now;
+    if(delta < encSens){
       encStep = longStep;
+    } else {
+      encStep = normStep;
     }
-    encStep = min(encStep, longStep);   //Force encStep to longStep to prevent errors.
   }
   if (dir == DIR_CW) {
     value += encStep;
@@ -66,15 +67,16 @@ int Encoder::loop(int _value) {
   return value;
 }
 
-uint8_t Encoder::setStep(uint8_t _normStep) {
-  return normStep = _normStep;
+void Encoder::setStep(uint8_t _normStep) {
+  normStep = _normStep;  
+  return;
 }
 
-uint8_t Encoder::setAccel(uint8_t _longStep) {
-  return longStep = _longStep;
+void Encoder::setAccel(uint8_t _longStep) {
+  longStep = _longStep;
+  return;
 }
 
 unsigned char Encoder::getDirection() {
   return dir;
 }
-
