@@ -29,8 +29,8 @@ class Encoder {
   public:
     Encoder(uint8_t _pinA, uint8_t _pinB, uint8_t _pullup = INTERNAL, byte _encSens = 0);
     int loop(int _value);
-    uint8_t setStep(uint8_t _normStep);
-    uint8_t setAccel(uint8_t _longStep);
+    void setStep(uint8_t _normStep);
+    void setAccel(uint8_t _longStep);
     unsigned char getDirection();
   private:
     uint8_t pinA;
@@ -43,7 +43,6 @@ class Encoder {
     unsigned char dir;
     int value;
     unsigned long currentRotation;
-    unsigned long lastRotation;
 };
 
 #endif
