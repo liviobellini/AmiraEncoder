@@ -28,20 +28,20 @@
 class Encoder {
   public:
     Encoder(uint8_t _pinA, uint8_t _pinB, uint8_t _pullup = INTERNAL, byte _encSens = 0);
-    int loop(int _value);
+    int32_t loop(int32_t _value);
     void setStep(uint8_t _normStep);
-    void setAccel(uint8_t _longStep);
+    void setAccel(uint16_t _longStep);
     unsigned char getDirection();
   private:
     uint8_t pinA;
     uint8_t pinB;
     uint8_t pullup;
     byte encSens;
-    uint8_t normStep;
-    uint8_t longStep;
+    uint8_t normStep;                 //Normal step is a normal number (0 <-> 255).
+    uint16_t longStep;                //Long step is a large number (0 <-> 65535).
     unsigned char state;
     unsigned char dir;
-    int value;
+    int32_t value;                    //Value is a very large number (−2.147.483.648 <-> +2.147.483.647) so the library can manage very large number.
     unsigned long currentRotation;
 };
 
