@@ -60,5 +60,3 @@ Leave a star ⭐ on GitHub if you find AmiraEncoder useful!
 ![Screenshot encoder](docs/img/AcceleratedRotary.jpg)
 ![Screenshot encoder](docs/img/DirectionRotary.jpg)
 ![Screenshot encoder](docs/img/NormalRotary.jpg)
-
-
