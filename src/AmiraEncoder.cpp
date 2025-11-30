@@ -41,7 +41,7 @@ Encoder::Encoder(uint8_t _pinA, uint8_t _pinB, uint8_t _pullup, byte _encSens) {
   state = R_START;
 }
 
-int Encoder::loop(int _value) {
+int32_t Encoder::loop(int32_t _value) {
   int encStep = normStep;
   value = _value;
   unsigned char pinstate = (digitalRead(pinB) << 1) | digitalRead(pinA);
@@ -72,7 +72,7 @@ void Encoder::setStep(uint8_t _normStep) {
   return;
 }
 
-void Encoder::setAccel(uint8_t _longStep) {
+void Encoder::setAccel(uint16_t _longStep) {
   longStep = _longStep;
   return;
 }
