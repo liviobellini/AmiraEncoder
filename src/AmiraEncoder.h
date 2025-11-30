@@ -41,7 +41,7 @@ class Encoder {
     uint16_t longStep;                //Long step is a large number (0 <-> 65535).
     unsigned char state;
     unsigned char dir;
-    int32_t value;                    //Value is a very large number (−2.147.483.648 <-> +2.147.483.647) so the library can manage very large number.
+    int32_t value;                    //Value is a very large number (−2.147.483.648 <-> +2.147.483.647), this prevents overflow problems.
     unsigned long currentRotation;
 };
 
