@@ -32,7 +32,7 @@ Copy the **AmiraEncoder** folder into: ~/Documents/Arduino/libraries.
 ## 📕 User guide
 
 - ✔️ If you want to use half step rotary encoder table then you have to declare "#define HALF_STEP" before including "#include <AmiraEncoder.h>".<br>
-- ✔️ Use setStep to set the regular step value and use setAccel to set the accelerated step value.<br>
+- ✔️ Use setStep to set the normal step value and use setAccel to set the accelerated step value.<br>
 - ✔️ If you don't use these functions then default values will be 1 for normStep and 0 for longStep.<br>
 - ❗❗ In setAccel use always a value greater than the value used in setStep.<br>
 - ✔️ Call name.setAccel(0); when you want to disable acceleration.<br>
@@ -63,5 +63,6 @@ Leave a star ⭐ on GitHub if you find AmiraEncoder useful!
 ![Screenshot encoder](docs/img/AcceleratedRotary.jpg)
 ![Screenshot encoder](docs/img/DirectionRotary.jpg)
 ![Screenshot encoder](docs/img/NormalRotary.jpg)
+
 
 
