@@ -30,16 +30,19 @@ Open Library Manager on left column of Arduino IDE -> search "AmiraEncoder" -> s
 Copy the **AmiraEncoder** folder into: ~/Documents/Arduino/libraries.
 
 ## 📕 User guide
-❗❗Remember that if you want to use half step rotary encoder table then you have to declare "#define HALF_STEP" before including "#include <AmiraEncoder.h>".<br>
-Use setStep to set the regular step value and use setAccel to set the accelerated step value.<br>
-If you don't use these functions then default values will be 1 for normStep and 0 for longStep.<br>
-❗❗In setAccel use always a value greater than the value used in setStep.<br>
-Encoder::name(DT, CLK, EXTERNAL, 25;  <= This is the right way to declare encoder object with external pullup resistors and 25 as sensitivity.<br>
-If you don't declare EXTERNAL then it will be INTERNAL as default for pullup resistors.<br>
-If you don't write a value for sensitivity in object parameters then it will be 0 as default, I like using 25 sensitivity.<br>
-❗❗If sensitivity is equal to 0 and longStep is equal to 0 then the acceleration is inhibited.<br>
-Remember to call name.setAccel(0); when you want to disable acceleration.<br>
-Remember to call name.setStep(1); when you want to reset the normal step to 1 (default).<br>
+
+- ❗❗ If you want to use half step rotary encoder table then you have to declare "#define HALF_STEP" before including "#include <AmiraEncoder.h>".<br>
+- Use setStep to set the regular step value and use setAccel to set the accelerated step value.<br>
+- If you don't use these functions then default values will be 1 for normStep and 0 for longStep.<br>
+- ❗❗ In setAccel use always a value greater than the value used in setStep.<br>
+- Encoder::name(DT, CLK, EXTERNAL, 25;  <= This is the right way to declare encoder object with external pullup resistors and 25 as sensitivity.<br>
+- If you don't declare EXTERNAL then it will be INTERNAL as default for pullup resistors.<br>
+- If you don't write a value for sensitivity in object parameters then it will be 0 as default, I like using 25 sensitivity.<br>
+- ❗❗ If sensitivity is equal to 0 and longStep is equal to 0 then the acceleration is inhibited.<br>
+- Call name.setAccel(0); when you want to disable acceleration.<br>
+- Call name.setStep(1); when you want to reset the normal step to 1 (default).<br>
+- ❗❗ AmiraEncoder return a long type (int32_t), to prevent overflow error do not use AmiraEncoder to change unsigned variables.
+
 Three examples to learn how to use the library. Enjoy!😎
 
 ## ⚙️ Requirements
@@ -60,3 +63,4 @@ Leave a star ⭐ on GitHub if you find AmiraEncoder useful!
 ![Screenshot encoder](docs/img/AcceleratedRotary.jpg)
 ![Screenshot encoder](docs/img/DirectionRotary.jpg)
 ![Screenshot encoder](docs/img/NormalRotary.jpg)
+
