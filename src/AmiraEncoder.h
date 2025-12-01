@@ -39,12 +39,13 @@ class Encoder {
     byte encSens;                     //Encoder sensitivity. The higher the value, the earlier the acceleration kicks in.
     uint8_t normStep;                 //Normal step is a positive number (0 <-> 255).
     uint16_t longStep;                //Long step is a large positive number (0 <-> 65535).
-    unsigned char state;              
+    unsigned char state;              //Save the state on the table.
     unsigned char dir;                //Rotation direction.
     int32_t value;                    //Value is a very large negative and positive number (−2.147.483.648 <-> +2.147.483.647), this prevents overflow problems.
     unsigned long lastMove;           //Save the last encoder movement time.
 };
 
 #endif
+
 
 
