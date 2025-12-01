@@ -30,7 +30,7 @@ Encoder::Encoder(uint8_t _pinA, uint8_t _pinB, uint8_t _pullup, byte _encSens) {
   longStep = 0;
   dir = DIR_NONE;
   value = 0;
-  currentRotation = 0;
+  lastMove = 0;
   if (pullup == INTERNAL) {
     pinMode(pinA, INPUT_PULLUP);
     pinMode(pinB, INPUT_PULLUP);
@@ -48,10 +48,10 @@ int32_t Encoder::loop(int32_t _value) {
   state = ttable[state & 0xf][pinstate];
   dir = state & 0x30; 
   if(encSens != 0 && dir != DIR_NONE && longStep != 0) {
-    unsigned long now = millis();
-    unsigned long delta = now - currentRotation;
-    currentRotation = now;
-    if(delta < encSens){
+    unsigned long currentMove = millis();
+    unsigned long deltaMove = currentMove - lastMove;
+    lastMove = currentMove;
+    if(deltaMove < encSens){
       encStep = longStep;
     } else {
       encStep = normStep;
