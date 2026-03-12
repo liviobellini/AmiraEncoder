@@ -47,23 +47,15 @@ int32_t Encoder::loop(int32_t _value) {
   unsigned char pinstate = (digitalRead(pinB) << 1) | digitalRead(pinA);
   state = ttable[state & 0xf][pinstate];
   dir = state & 0x30; 
-  if(encSens != 0 && dir != DIR_NONE && longStep != 0) {
+  if(encSens && longStep && dir != DIR_NONE) {
     unsigned long currentMove = millis();
     unsigned long deltaMove = currentMove - lastMove;
     lastMove = currentMove;
-    if(deltaMove < encSens){
-      encStep = longStep;
-    } else {
-      encStep = normStep;
-    }
+    if(deltaMove < encSens) encStep = longStep;
+    else encStep = normStep;
   }
-  if (dir == DIR_CW) {
-    value += encStep;
-  } else if (dir == DIR_CCW) {
-    value -= encStep;
-  } else if (dir == DIR_NONE){
-    value = value;
-  }
+  if (dir == DIR_CW) value += encStep;
+  else if (dir == DIR_CCW) value -= encStep;
   return value;
 }
 
@@ -80,3 +72,4 @@ void Encoder::setAccel(uint16_t _longStep) {
 unsigned char Encoder::getDirection() {
   return dir;
 }
+
