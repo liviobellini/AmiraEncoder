@@ -12,7 +12,7 @@ AmiraEncoder allows developers to use the rotary encoder with acceleration suppo
 - ✔️ Configurable normal step, accelerated step and encoder sensitivity
 - ✔️ Integrated variable increment/decrement logic
 - ✔️ Bounce-resistant thanks to state-table logic (developed by Brian Low)
-- ✔️ Selectable full step and half step table in constructor.
+- ✔️ Selectable full step and half step mode in constructor.
 - ✔️ Supports internal or external pullup resistors
 - ✔️ Clean and beginner-friendly API
 
