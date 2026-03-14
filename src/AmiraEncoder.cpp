@@ -21,7 +21,7 @@ const unsigned char ttable_full[7][4] = {
   {R_CCW_NEXT, R_CCW_FINAL, R_CCW_BEGIN, R_START},
 };
 
-Encoder::Encoder(uint8_t _pinA, uint8_t _pinB, uint8_t _pullup, byte _stepMode, byte _encSens) {
+Encoder::Encoder(uint8_t _pinA, uint8_t _pinB, uint8_t _pullup, uint8_t _stepMode, uint8_t _encSens) {
   pinA = _pinA;
   pinB = _pinB;
   pullup = _pullup;
