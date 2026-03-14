@@ -31,17 +31,16 @@ Copy the **AmiraEncoder** folder into: ~/Documents/Arduino/libraries.
 
 ## 📕 User guide
 
-- ✔️ If you want to use half step rotary encoder table then you have to declare "#define HALF_STEP" before including "#include <AmiraEncoder.h>".<br>
-- ✔️ Use setStep to set the normal step value and use setAccel to set the accelerated step value.<br>
-- ✔️ If you don't use these functions then default values will be 1 for normStep and 0 for longStep.<br>
-- ❗❗ In setAccel use always a value greater than the value used in setStep.<br>
-- ✔️ Call name.setAccel(0); when you want to disable acceleration.<br>
-- ✔️ Call name.setStep(1); when you want to reset the normal step to 1 (default).<br>
 - ✔️ Encoder::name(DT, CLK, EXTERNAL, 25, HALF_STEP); <= encoder object with external pullup resistors, 25 as sensitivity and half step mode.<br>
 - ✔️ If you don't declare EXTERNAL then it will be INTERNAL as default for pullup resistors.<br>
 - ✔️ If you don't write a value for sensitivity in object parameters then it will be 0 as default, I like using 25 sensitivity.<br>
 - ✔️ If you don't declare HALF_STEP then it will be FULL_STEP as default for step mode.<br>
 - ❗❗ If sensitivity is equal to 0 and longStep is equal to 0 then the acceleration is inhibited.<br>
+- ✔️ Use setStep to set the normal step value and use setAccel to set the accelerated step value.<br>
+- ✔️ If you don't use these functions then default values will be 1 for normStep and 0 for longStep.<br>
+- ❗❗ In setAccel use always a value greater than the value used in setStep.<br>
+- ✔️ Call name.setAccel(0); when you want to disable acceleration.<br>
+- ✔️ Call name.setStep(1); when you want to reset the normal step to 1 (default).<br>
 - ❗❗ AmiraEncoder return a long type (int32_t), to prevent overflow error do not use AmiraEncoder to change unsigned type variables.
 
 Three examples to learn how to use the library. Enjoy!😎
