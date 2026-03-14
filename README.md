@@ -41,7 +41,7 @@ Copy the **AmiraEncoder** folder into: ~/Documents/Arduino/libraries.
 - ❗❗ In setAccel use always a value greater than the value used in setStep.<br>
 - ✔️ Call name.setAccel(0); when you want to disable acceleration.<br>
 - ✔️ Call name.setStep(1); when you want to reset the normal step to 1 (default).<br>
-- ❗❗ AmiraEncoder return a long type (int32_t), to prevent overflow error do not use AmiraEncoder to change unsigned type variables.
+- ❗❗ AmiraEncoder returns a long type (int32_t), to prevent overflow error do not use AmiraEncoder to change unsigned type variables.
 
 ## 🙂 Differences between half step and full step mode
 
