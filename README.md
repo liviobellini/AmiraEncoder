@@ -46,7 +46,7 @@ Copy the **AmiraEncoder** folder into: ~/Documents/Arduino/libraries.
 ## 🙂 Differences between half step and full step mode
 
 - ✔️ HALF_STEP event also generated on intermediate states (11):
-- very precise, more sensitive to bounce, double theoretical resolution, suitable for high-quality encoders.
+- less stable, more sensitive to bounce, double theoretical resolution, suitable for high-quality encoders.
 - ✔️ FULL_STEP event generated only when the encoder reaches the mechanical detent (typically 00):
 - very stable, less sensitive to bounce, low precision than half step, suitable for low-cost encoders. 
 
