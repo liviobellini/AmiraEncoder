@@ -13,7 +13,7 @@
 const byte ENCSENS = 25;      //Defines the milliseconds threshold to enable/disable rotary encoder acceleration. The higher the value, the earlier the acceleration kicks in.
 ///////////////////////OBJECTS DEFINITION//////////////////////
 hd44780_I2Cexp lcd;                                                          //Set object LCD with address auto-detect.
-Encoder myEncoder(DT, CLK, EXTERNAL, FULL_STEP, 25);                         //Set object for rotary encoder with external pullup resistors, full step mode and sensitivity 25.
+Encoder myEncoder(DT, CLK, EXTERNAL, FULL_STEP, 25);              //Set object for rotary encoder with external pullup resistors, full step mode and sensitivity 25.
 //IMPORTANT: If you don't write anything in cosntructor then default configuration for the pull-up resistors will be INTERNAL.
 //IMPORTANT: If you don't write anything in constructor then the default sensitivity value will be 0ms.
 ///////////////////////ARDUINO FUNCTIONS///////////////////////
