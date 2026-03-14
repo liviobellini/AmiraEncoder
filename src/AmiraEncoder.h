@@ -38,7 +38,7 @@ class Encoder {
     uint8_t pinA;
     uint8_t pinB;
     uint8_t pullup;
-    uint8_t stepMode;                 //Defines if you use half step or full step mode table (use full step mode for cheap encoders).
+    uint8_t stepMode;                 //Defines if you use half step or full step mode table.
     uint8_t encSens;                  //Encoder sensitivity. The higher the value, the earlier the acceleration kicks in.
     uint8_t normStep;                 //Normal step is a positive number (0 <-> 255).
     uint16_t longStep;                //Long step is a large positive number (0 <-> 65535).
