@@ -29,7 +29,7 @@
 
 class Encoder {
   public:
-    Encoder(uint8_t _pinA, uint8_t _pinB, uint8_t _pullup, byte _stepMode, byte _encSens);
+    Encoder(uint8_t _pinA, uint8_t _pinB, uint8_t _pullup, byte _stepMode, byte _encSens = 0);
     int32_t loop(int32_t _value);
     void setStep(uint8_t _normStep);
     void setAccel(uint16_t _longStep);
