@@ -1,7 +1,6 @@
 //AmiraEncoder direction rotary encoder.
 //This example shows how to use getDirection function to know how you are turning the rotary encoder, enjoy. :-)
 #include <Arduino.h>
-//#define HALF_STEP                                                          //Uncomment if you want to use half step rotary encoder table.
 #include <AmiraEncoder.h>
 #include <Wire.h>
 #include <hd44780.h>
