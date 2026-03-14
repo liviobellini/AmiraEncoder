@@ -10,7 +10,7 @@
 #define CLK 5                 //Clock encoder.
 ///////////////////////OBJECTS DEFINITION//////////////////////
 hd44780_I2Cexp lcd;                                                          //Set object LCD with address auto-detect.
-Encoder myEncoder(DT, CLK, EXTERNAL);                                        //Set object for rotary encoder with external pullup resistors and no sensitivity.
+Encoder myEncoder(DT, CLK, EXTERNAL, FULL_STEP, 0);                          //Set object for rotary encoder with external pullup resistors and no sensitivity.
 //IMPORTANT: If you don't write anything in cosntructor then default configuration for the pull-up resistors will be INTERNAL.
 //IMPORTANT: If you don't write anything in constructor then the default sensitivity value will be 0ms.
 ///////////////////////ARDUINO FUNCTIONS///////////////////////
