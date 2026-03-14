@@ -46,7 +46,7 @@ Copy the **AmiraEncoder** folder into: ~/Documents/Arduino/libraries.
 
 Three examples to learn how to use the library. Enjoy!😎
 
-## 🙂 About half step and full step mode
+## 🙂 Differences between half step and full step mode
 
 - ✔️ HALF_STEP  event also generated on intermediate states (11):
 - very precise, more sensitive to bounce, double theoretical resolution, suitable for high-quality encoders.
