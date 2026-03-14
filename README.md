@@ -31,7 +31,7 @@ Copy the **AmiraEncoder** folder into: ~/Documents/Arduino/libraries.
 
 ## 📕 User guide
 
-- ✔️ Encoder::name(DT, CLK, EXTERNAL, HALF_STEP, 25); <= encoder object with external pullup resistors, half step mode and 25 as sensitivity .<br>
+- ✔️ Encoder::name(DT, CLK, EXTERNAL, FULL_STEP, 25); <= encoder object with external pullup resistors, full step mode and 25 as sensitivity .<br>
 - ✔️ Pullup resistors: you can declare INTERNAL or EXTERNAL.<br>
 - ✔️ Step mode: you can declare HALF_STEP or FULL_STEP.<br>
 - ✔️ Sensitivity: I like using 25 sensitivity. If you don't use acceleration then just write 0.<br>
